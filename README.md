@@ -1,6 +1,6 @@
 # Check Collections
 
-[Install Rust[(https://www.rust-lang.org/learn/get-started) v1.58 or later.
+[Install Rust](https://www.rust-lang.org/learn/get-started) v1.58 or later.
 
 Build:
 
