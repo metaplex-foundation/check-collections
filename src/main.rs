@@ -18,7 +18,7 @@ async fn main() -> Result<()> {
 
     println!("Getting solana config");
     let sol_config = parse_solana_config();
-    let sol_config = sol_config.ok_or(anyhow!("Failed to parse solana config"))?;
+    let sol_config = sol_config.ok_or_else(|| anyhow!("Failed to parse solana config"))?;
 
     let commitment = CommitmentConfig::from_str(&sol_config.commitment)?;
     let timeout = Duration::from_secs(300);
@@ -30,7 +30,7 @@ async fn main() -> Result<()> {
 
     println!("Getting mint list");
     let mint_list_path = args[1].clone();
-    let mint_list_name = mint_list_path.split(".").next().unwrap().to_string();
+    let mint_list_name = mint_list_path.split('.').next().unwrap().to_string();
 
     let f = File::open(mint_list_path)?;
     let mut mint_list: Vec<String> = serde_json::from_reader(f)?;
